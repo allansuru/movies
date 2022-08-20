@@ -16,10 +16,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { PageContentModule } from '@core/layout/page-content/page-content.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MessageSnackBarComponent } from '@core/layout/message-snack-bar/message-snack-bar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, MessageSnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +45,11 @@ import { PageContentModule } from '@core/layout/page-content/page-content.module
     MatToolbarModule,
     MatListModule,
     MatButtonModule,
-    PageContentModule
+    PageContentModule,
+    HttpClientModule,
+    MatSnackBarModule
+
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
