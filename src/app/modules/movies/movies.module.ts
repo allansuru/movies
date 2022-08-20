@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesComponent } from './movies.component';
 import { MoviesRoutingModule } from './movies-routing.module';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -17,17 +17,25 @@ import * as moviesReducers from './shared/store/movies.reducers';
 import { MoviesTableComponent } from './movies-table/movies-table.component';
 import { SpinnerModule } from '@core/layout/spinner/spinner.module';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MoviesSearchComponent } from './movies-search/movies-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MoviesRoutingModule,
     FlexLayoutModule,
+    FlexModule,
     MatIconModule,
     MatTableModule,
+    MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatButtonModule,
     StoreModule.forFeature(
       moviesReducers.MoviesFeatureKey,
       moviesReducers.reducer
@@ -36,7 +44,7 @@ import { MatTableModule } from '@angular/material/table';
     SpinnerModule,
 
   ],
-  declarations: [MoviesComponent, MoviesTableComponent],
+  declarations: [MoviesComponent, MoviesTableComponent, MoviesSearchComponent],
 
 })
 export class MoviesModule { }

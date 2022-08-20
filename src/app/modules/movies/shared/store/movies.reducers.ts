@@ -29,11 +29,13 @@ export const { selectAll, selectEntities, selectIds, selectTotal } =
 const MoviesReducer = createReducer(
   initialState,
 
-  on(MoviesActions.loadMovies, (state) => ({
-    ...state,
-    ...{ loading: true },
-  })),
+  on(MoviesActions.fetchMovies, (state) => {
 
+    return ({
+      ...state,
+      ...{ loading: true },
+    });
+  }),
 
   on(MoviesActions.fetchMoviesFailure, (state, action) => ({
     ...state,
@@ -44,7 +46,29 @@ const MoviesReducer = createReducer(
 
     return adapter.setAll(action.data, {
       ...state,
-      ...{ loading: false, errorExtrato: null, },
+      ...{ loading: false, },
+    });
+  }
+  ),
+
+  on(MoviesActions.searchMovie, (state) => {
+
+    return ({
+      ...state,
+      ...{ loading: true },
+    });
+  }),
+
+  on(MoviesActions.searchMovieFailure, (state, action) => ({
+    ...state,
+    ...{ loading: false, },
+  })),
+
+  on(MoviesActions.searchMovieSuccess, (state, action) => {
+
+    return adapter.setAll(action.data, {
+      ...state,
+      ...{ loading: false, },
     });
   }
   ),

@@ -39,4 +39,18 @@ export class MoviesEffects {
   });
 
 
+  searchMovie$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MoviesActions.searchMovie),
+      switchMap((movie: any) =>
+        this.moviesApiService.searchMovie(movie).pipe(map((data: any) =>
+          MoviesActions.searchMovieSuccess({ data: data.results })
+        ), catchError((error) => of(MoviesActions.searchMovieFailure(error))
+        )
+        )
+      )
+    );
+  });
+
+
 }

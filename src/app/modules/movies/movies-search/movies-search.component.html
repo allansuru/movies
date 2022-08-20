@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <form name="searchForm" [formGroup]="form" class="search-form">
+    <mat-form-field fxFlex appearance="fill">
+      <mat-label>Buscar por Título</mat-label>
+      <input matInput formControlName="title" />
+      <mat-icon (click)="searchHandler()" matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="reset-btn ml-2"
+      (click)="resetHandler()"
+    >
+      <span>Limpar</span>
+    </button>
+  </form>
+</div>

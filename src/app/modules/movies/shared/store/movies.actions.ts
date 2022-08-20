@@ -18,3 +18,19 @@ export const fetchMoviesFailure = createAction(
 export const loadMovies = createAction(
   '[MOVIES API] Loading..'
 );
+
+export const searchMovie = createAction(
+  '[MOVIES API] Load  specific Movie',
+  props<{ data: any }>()
+);
+
+export const searchMovieSuccess = createAction(
+  '[MOVIES API] Load  specific Movie Success',
+  props<{ data: any }>()
+);
+
+export const searchMovieFailure = createAction(
+  '[MOVIES API] Load  specific Movie failure',
+  props<{ error: any }>()
+);
+

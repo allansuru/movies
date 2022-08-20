@@ -14,4 +14,9 @@ export class MoviesApiService {
   fetchMovies = (): Observable<Movies[]> =>
     this.httpApiService.get<Movies[]>(`movie/now_playing?api_key=${environment.api_key}`, null);
 
+
+  searchMovie = ({ data }: any): Observable<Movies[]> =>
+    this.httpApiService.get<Movies[]>(`search/movie?api_key=${environment.api_key}&language=en-US&page=1&include_adult=true&query=${data}`);
+
+
 }

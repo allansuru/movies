@@ -4,5 +4,5 @@ export interface ComponentEvent<T, K> {
   // @data data: dados a serem passados pelo componente
   componentName?: string;
   action: T;
-  data: K;
+  data?: K;
 }

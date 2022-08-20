@@ -8,7 +8,7 @@ import { MoviesAction } from '../enums/movies-action.enum';
 })
 export class MoviesService extends ComponentEventHandler<
 MoviesAction,
-Movies
+Movies | string | null
 > {
 
   tableDisplayedColumns: string[] = [
