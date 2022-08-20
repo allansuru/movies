@@ -9,6 +9,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { MoviesEffects } from './shared/store/movies.effects';
+import { EffectsModule } from '@ngrx/effects';
+
+import * as moviesReducers from './shared/store/movies.reducers';
 
 
 @NgModule({
@@ -19,6 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     HttpClientModule,
     MatSnackBarModule,
+    StoreModule.forFeature(
+      moviesReducers.MoviesFeatureKey,
+      moviesReducers.reducer
+    ),
+    EffectsModule.forFeature([MoviesEffects]),
 
   ],
   declarations: [MoviesComponent],

@@ -12,6 +12,6 @@ export class MoviesApiService {
   constructor(private httpApiService: HttpApiService) { }
 
   fetchMovies = (): Observable<Movies[]> =>
-    this.httpApiService.get<Movies[]>(`movie/now_playing123?api_key=${environment.api_key}`, null);
+    this.httpApiService.get<Movies[]>(`movie/now_playing?api_key=${environment.api_key}`, null);
 
 }
