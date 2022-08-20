@@ -5,7 +5,7 @@ import { environment } from '@env/environment';
 
 import * as queryString from 'query-string';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,27 +15,6 @@ export class HttpApiService {
     private http: HttpClient,
     public snackBar: MatSnackBar
   ) { }
-
-  getBlob<payloadT, T>(endPointUrl: string, payload: any): Observable<any> {
-    const params = payload
-      ? new HttpParams({
-        fromString: queryString.stringify(payload, { skipNull: true }),
-      })
-      : {};
-    return new Observable((observer) => {
-      this.http
-        .get<any>(`${environment.baseUrl}${endPointUrl}`, {
-          params,
-          observe: 'response' as 'body',
-          responseType: 'blob' as 'json',
-        })
-        .pipe(catchError((error) => this.handleError(error)))
-        .subscribe((res) => {
-          observer.next(res);
-          observer.complete();
-        });
-    });
-  }
 
   get<payloadT>(endPointUrl: string, payload?: any): Observable<payloadT> {
     const params = payload
@@ -49,7 +28,7 @@ export class HttpApiService {
         .get<payloadT>(`${environment.baseUrl}/${endPointUrl}`, {
           params,
         })
-        .pipe(catchError((error) => this.handleError(error)))
+        .pipe(retry(2), catchError((error) => this.handleError(error)))
         .subscribe((res: any) => {
           res?.error ? observer.error(res.error) : observer.next(res);
           observer.complete();

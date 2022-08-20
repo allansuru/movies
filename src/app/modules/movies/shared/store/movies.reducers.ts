@@ -44,7 +44,7 @@ const MoviesReducer = createReducer(
 
     return adapter.setAll(action.data, {
       ...state,
-      ...{ loading: false, errorExtrato: null },
+      ...{ loading: false, errorExtrato: null, },
     });
   }
   ),

@@ -22,24 +22,22 @@
     </div>
   </div>
 
-  <!-- <div class="content-card">
-      <ng-container *ngIf="loading$ | async as loading; else loading">
-        <app-spinner [size]="20" [shouldShow]="loading"></app-spinner>
-      </ng-container>
-      <ng-template #loading>
-        <div
-          *ngIf="accounts$ | async as data"
-          [@animate]="{ value: '*', params: { delay: '120ms', scale: '.2' } }"
-          class="ps"
-          style="position: relative;"
-          [perfectScrollbar]
-        >
-          <app-account-list-table
-            [data]="data"
-            [roles]="roles"
-            [displayedColumns]="tableDisplayedColumns"
-          ></app-account-list-table>
-        </div>
-      </ng-template>
-    </div> -->
+  <div class="content-card">
+    <ng-container *ngIf="loading$ | async as loading; else loading">
+      <app-spinner [size]="20" [shouldShow]="loading"></app-spinner>
+    </ng-container>
+    <ng-template #loading>
+      <div
+        *ngIf="movies$ | async as data"
+        [@animate]="{ value: '*', params: { delay: '120ms', scale: '.2' } }"
+        class="ps"
+        style="position: relative"
+      >
+        <app-movies-table
+          [data]="data"
+          [displayedColumns]="moviesService.tableDisplayedColumns"
+        ></app-movies-table>
+      </div>
+    </ng-template>
+  </div>
 </div>

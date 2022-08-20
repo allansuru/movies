@@ -6,10 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import {
   catchError,
-  exhaustMap,
-  filter,
   map,
-  mergeMap,
   switchMap,
   tap,
 } from 'rxjs/operators';

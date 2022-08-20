@@ -6,10 +6,19 @@ import { MoviesAction } from '../enums/movies-action.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class MoviesServiceextends extends ComponentEventHandler<
+export class MoviesService extends ComponentEventHandler<
 MoviesAction,
 Movies
 > {
+
+  tableDisplayedColumns: string[] = [
+    'backdrop_path',
+    'original_title',
+    'overview',
+    'release_date',
+    'vote_average',
+  ];
+
   constructor() {
     super();
   }

@@ -14,6 +14,9 @@ import { MoviesEffects } from './shared/store/movies.effects';
 import { EffectsModule } from '@ngrx/effects';
 
 import * as moviesReducers from './shared/store/movies.reducers';
+import { MoviesTableComponent } from './movies-table/movies-table.component';
+import { SpinnerModule } from '@core/layout/spinner/spinner.module';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -22,6 +25,7 @@ import * as moviesReducers from './shared/store/movies.reducers';
     MoviesRoutingModule,
     FlexLayoutModule,
     MatIconModule,
+    MatTableModule,
     HttpClientModule,
     MatSnackBarModule,
     StoreModule.forFeature(
@@ -29,9 +33,10 @@ import * as moviesReducers from './shared/store/movies.reducers';
       moviesReducers.reducer
     ),
     EffectsModule.forFeature([MoviesEffects]),
+    SpinnerModule,
 
   ],
-  declarations: [MoviesComponent],
+  declarations: [MoviesComponent, MoviesTableComponent],
 
 })
 export class MoviesModule { }

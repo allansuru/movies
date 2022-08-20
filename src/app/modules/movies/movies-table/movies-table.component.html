@@ -1,3 +1,64 @@
-<p>
-  movies-table works!
-</p>
+<div class="dh-table mt-3">
+  <mat-table [dataSource]="data" class="mat-elevation-z0">
+    <ng-container matColumnDef="backdrop_path">
+      <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header>
+        Imagem
+      </mat-header-cell>
+      <mat-cell fxFlex="10%" *matCellDef="let element">
+        <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
+          <div *ngIf="element?.backdrop_path" class="item-img-thumbnail mr-3">
+            <img
+              class="friendly-img"
+              src="{{
+                'https://image.tmdb.org/t/p/original/' + element?.backdrop_path
+              }}"
+            />
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="original_title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Título
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.original_title }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="overview">
+      <mat-header-cell fxFlex="30%" *matHeaderCellDef mat-sort-header>
+        Overview
+      </mat-header-cell>
+      <mat-cell fxFlex="30%" *matCellDef="let element">
+        {{ element.overview }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="release_date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Data
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.release_date | date: "dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="vote_average">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Média
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.vote_average }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      class="clicable-item"
+      (click)="gotoDetail(row, $event)"
+      *matRowDef="let row; columns: displayedColumns"
+    ></mat-row>
+  </mat-table>
+</div>

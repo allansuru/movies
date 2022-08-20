@@ -5,12 +5,17 @@ export const selectMoviesState = createFeatureSelector<fromMovies.State>(
   fromMovies.MoviesFeatureKey
 );
 
-export const selectSaldoExtratoLoading = createSelector(
+export const selectMoviesLoading = createSelector(
   selectMoviesState,
   (state) => state.loading
 );
 
-export const selectExtractEntities = createSelector(
+export const selectMoviesEntities = createSelector(
   selectMoviesState,
   fromMovies.selectEntities
 );
+
+
+export const selectAllMovies = createSelector(selectMoviesState, state => {
+  return fromMovies.selectAll(state);
+});

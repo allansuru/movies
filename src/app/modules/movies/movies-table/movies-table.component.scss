@@ -1,0 +1,25 @@
+app-movies-table {
+  img.friendly-img {
+    width: 120px;
+    height: 120px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .main-container {
+    position: relative;
+    .right-bar-details {
+      width: 350px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      overflow-x: hidden;
+      background: #eeeeee;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      z-index: 1;
+    }
+  }
+}
