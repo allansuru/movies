@@ -10,6 +10,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '@env/environment';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { PageContentModule } from '@core/layout/page-content/page-content.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -30,6 +37,12 @@ import { environment } from '@env/environment';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+    PageContentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
