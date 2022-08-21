@@ -34,3 +34,18 @@ export const searchMovieFailure = createAction(
   props<{ error: any }>()
 );
 
+export const searchMovieById = createAction(
+  '[MOVIES API] Load  specific Movie by Id',
+  props<{ data: any }>()
+);
+
+export const searchMovieByIdSuccess = createAction(
+  '[MOVIES API] Load  specific Movie by Id Success',
+  props<{ data: any }>()
+);
+
+export const searchMovieByIdFailure = createAction(
+  '[MOVIES API] Load  specific Movie by id failure',
+  props<{ error: any }>()
+);
+

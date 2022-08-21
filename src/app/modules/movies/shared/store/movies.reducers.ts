@@ -1,13 +1,15 @@
-import { Movies } from '../interfaces/movies';
+import { Movies, Movie } from '../interfaces/movies';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 import * as MoviesActions from './movies.actions';
+import { act } from '@ngrx/effects';
 
 export const MoviesFeatureKey = 'MoviesState';
 
 export interface State extends EntityState<Movies> {
   loading: boolean;
-  results: Movies[];
+  movie: Movie;
+  loading_movie: boolean;
 }
 
 export function selectIdByExtract(extract: any) {
@@ -20,7 +22,8 @@ export const adapter: EntityAdapter<Movies> = createEntityAdapter<Movies>({
 
 export const initialState: State = adapter.getInitialState({
   loading: false,
-  results: [],
+  movie: {},
+  loading_movie: false,
 });
 
 export const { selectAll, selectEntities, selectIds, selectTotal } =
@@ -72,6 +75,33 @@ const MoviesReducer = createReducer(
     });
   }
   ),
+
+  on(MoviesActions.searchMovieById, (state) => {
+
+    return ({
+      ...state,
+      ...{ loading_movie: true },
+    });
+  }),
+
+  on(MoviesActions.searchMovieByIdFailure, (state) => {
+
+    return ({
+      ...state,
+      ...{ loading_movie: false },
+    });
+  }),
+
+
+  on(MoviesActions.searchMovieByIdSuccess, (state, action) => {
+    debugger
+
+    return ({
+      ...state,
+      ...{ loading_movie: false },
+      ...{ movie: action.data }
+    });
+  }),
 
 );
 

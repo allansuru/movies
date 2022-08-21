@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Movies } from './../interfaces/movies';
+import { Movies, Movie } from './../interfaces/movies';
 import { Injectable } from '@angular/core';
 import { HttpApiService } from '@core/services/http-api.service';
 import { environment } from '@env/environment';
@@ -17,6 +17,10 @@ export class MoviesApiService {
 
   searchMovie = ({ data }: any): Observable<Movies[]> =>
     this.httpApiService.get<Movies[]>(`search/movie?api_key=${environment.api_key}&language=en-US&page=1&include_adult=true&query=${data}`);
+
+  getMovieById = ({ data }: any): Observable<Movie> =>
+    this.httpApiService.get<Movie>(`movie/${data}?api_key=${environment.api_key}`);
+
 
 
 }

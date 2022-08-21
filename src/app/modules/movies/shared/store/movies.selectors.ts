@@ -15,7 +15,16 @@ export const selectMoviesEntities = createSelector(
   fromMovies.selectEntities
 );
 
+export const selectAllMovies = createSelector(selectMoviesState, state =>
+  fromMovies.selectAll(state)
+);
 
-export const selectAllMovies = createSelector(selectMoviesState, state => {
-  return fromMovies.selectAll(state);
-});
+export const selectMovieLoading = createSelector(
+  selectMoviesState,
+  (state) => state.loading_movie
+);
+
+export const selectMovie = createSelector(
+  selectMoviesState,
+  (state) => state.movie
+);
