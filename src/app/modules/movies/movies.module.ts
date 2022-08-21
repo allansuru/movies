@@ -21,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MoviesSearchComponent } from './movies-search/movies-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   imports: [
@@ -36,6 +37,8 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatCardModule,
+    MatPaginatorModule,
     StoreModule.forFeature(
       moviesReducers.MoviesFeatureKey,
       moviesReducers.reducer

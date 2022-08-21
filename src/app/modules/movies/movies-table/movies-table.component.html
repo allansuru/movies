@@ -1,19 +1,29 @@
 <div class="dh-table mt-3">
-  <mat-table [dataSource]="data" class="mat-elevation-z0">
+  <mat-table
+    [dataSource]="dataSource"
+    #table
+    class="mat-elevation-z0"
+    [@animateStagger]="{ value: '50' }"
+  >
     <ng-container matColumnDef="backdrop_path">
-      <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header>
+      <mat-header-cell fxShow.gt-xs *matHeaderCellDef mat-sort-header>
         Imagem
       </mat-header-cell>
-      <mat-cell fxFlex="10%" *matCellDef="let element">
-        <div class="py-3" fxLayout="row" fxLayoutAlign="start center">
-          <div *ngIf="element?.backdrop_path" class="item-img-thumbnail mr-3">
-            <img
-              class="friendly-img"
-              src="{{
-                'https://image.tmdb.org/t/p/original/' + element?.backdrop_path
-              }}"
-            />
-          </div>
+      <mat-cell *matCellDef="let element">
+        <div fxLayout="column" [style.height]="'100%'">
+          <mat-card class="mat-elevation-z0">
+            <div fxLayout="row" fxLayout.lt-sm="column">
+              <div fxFlex="0 100 100%">
+                <img
+                  mat-card-image
+                  src="{{
+                    'https://image.tmdb.org/t/p/original/' +
+                      element?.backdrop_path
+                  }}"
+                />
+              </div>
+            </div>
+          </mat-card>
         </div>
       </mat-cell>
     </ng-container>
@@ -61,4 +71,8 @@
       *matRowDef="let row; columns: displayedColumns"
     ></mat-row>
   </mat-table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of movies"
+  ></mat-paginator>
 </div>

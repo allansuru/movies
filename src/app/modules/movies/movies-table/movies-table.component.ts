@@ -1,7 +1,9 @@
 
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit } from '@angular/core';
 import { Movies } from '../shared/interfaces/movies';
 import { myAnimations } from '@core/animations';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movies-table',
@@ -10,14 +12,17 @@ import { myAnimations } from '@core/animations';
   animations: myAnimations,
   encapsulation: ViewEncapsulation.None,
 })
-export class MoviesTableComponent implements OnInit {
-
+export class MoviesTableComponent implements AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() displayedColumns!: string[];
   @Input() data!: Movies[];
+  dataSource!: MatTableDataSource<Movies>;
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator
 
   }
   gotoDetail(item: any, event: Event) {

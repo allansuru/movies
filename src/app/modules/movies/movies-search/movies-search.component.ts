@@ -23,6 +23,7 @@ export class MoviesSearchComponent implements OnInit {
   }
 
   resetHandler() {
+    this.form.reset()
     this.moviesService.dispatchAction({
       action: MoviesAction.FETCH,
     });
@@ -39,7 +40,7 @@ export class MoviesSearchComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.formBuilder.group({
-      title: ['']
+      title: [null]
     });
   }
 
