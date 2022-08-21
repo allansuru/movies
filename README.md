@@ -37,3 +37,13 @@ Detalhes do movie
 ## Build
 
 ![alt text](src/assets/build.png)
+
+## Responsivo
+
+Home
+
+![alt text](src/assets/responsivo_home.png)
+
+Details
+
+![alt text](src/assets/responsivo_detail.png)
