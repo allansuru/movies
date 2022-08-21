@@ -9,6 +9,7 @@ import { MoviesService } from './shared/services/movies.service';
 import { selectMoviesLoading, selectMoviesEntities, selectAllMovies } from './shared/store/movies.selectors';
 import { ComponentEvent } from '@core/abstract-classes/component-event-handler/component-event';
 import { filter, pluck, tap, takeUntil } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -22,7 +23,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
   loading$!: Observable<boolean>;
   private onDestroy$: Subject<void> = new Subject<void>();
 
-  constructor(private moviesStore: Store<{ movies: Movies }>, public moviesService: MoviesService) { }
+  constructor(private moviesStore: Store<{ movies: Movies }>, public moviesService: MoviesService, private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -65,6 +67,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
       case MoviesAction.SEARCH:
         this.moviesStore.dispatch(searchMovie({ data: event.data }))
         break;
+      case MoviesAction.DETAIL:
+        this.router.navigate(['/movies/', event.data.id], { relativeTo: this.activatedRoute });
+        break
 
       default:
         break;

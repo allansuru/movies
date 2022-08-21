@@ -1,9 +1,11 @@
+import { MoviesService } from './../shared/services/movies.service';
 
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit } from '@angular/core';
 import { Movies } from '../shared/interfaces/movies';
 import { myAnimations } from '@core/animations';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MoviesAction } from '../shared/enums/movies-action.enum';
 
 @Component({
   selector: 'app-movies-table',
@@ -16,18 +18,25 @@ export class MoviesTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() displayedColumns!: string[];
   @Input() data!: Movies[];
-  dataSource!: MatTableDataSource<Movies>;
+  dataSource: MatTableDataSource<Movies> = new MatTableDataSource(this.data);
 
-  constructor() { }
+  constructor(private moviesService: MoviesService) { }
 
   ngAfterViewInit() {
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator
 
   }
-  gotoDetail(item: any, event: Event) {
+  gotoDetailHandler(item: any, event: Event) {
     event.preventDefault();
     event.stopImmediatePropagation();
+
+    this.moviesService.dispatchAction({
+      action: MoviesAction.DETAIL,
+      data: { id: item.id }
+    })
+
+
 
   }
 

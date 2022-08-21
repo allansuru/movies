@@ -23,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
+import { ContentCardModule } from '@core/layout/content-card/content-card.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -45,9 +48,10 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     ),
     EffectsModule.forFeature([MoviesEffects]),
     SpinnerModule,
-
+    ContentCardModule,
+    RouterModule,
   ],
-  declarations: [MoviesComponent, MoviesTableComponent, MoviesSearchComponent],
+  declarations: [MoviesComponent, MoviesTableComponent, MoviesSearchComponent, MoviesDetailComponent],
 
 })
 export class MoviesModule { }

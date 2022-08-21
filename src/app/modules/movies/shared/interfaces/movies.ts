@@ -4,4 +4,5 @@ export interface Movies {
   overview: string;
   release_date: Date;
   vote_average: number
+  id: number;
 }

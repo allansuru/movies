@@ -1,4 +1,3 @@
-import { Movies } from './../interfaces/movies';
 import { Injectable } from '@angular/core';
 import { ComponentEventHandler } from '@core/abstract-classes/component-event-handler/component-event-handler';
 import { MoviesAction } from '../enums/movies-action.enum';
@@ -8,7 +7,7 @@ import { MoviesAction } from '../enums/movies-action.enum';
 })
 export class MoviesService extends ComponentEventHandler<
 MoviesAction,
-Movies | string | null
+any
 > {
 
   tableDisplayedColumns: string[] = [

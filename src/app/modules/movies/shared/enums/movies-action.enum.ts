@@ -1,4 +1,5 @@
 export enum MoviesAction {
   SEARCH = 'SEARCH',
-  FETCH = 'FETCH'
+  FETCH = 'FETCH',
+  DETAIL = 'DETAIL'
 }
