@@ -13,8 +13,6 @@ import {
 } from 'rxjs/operators';
 
 import * as MoviesActions from './movies.actions';
-import { Movies } from '../interfaces/movies';
-
 
 @Injectable()
 export class MoviesEffects {
@@ -52,7 +50,6 @@ export class MoviesEffects {
       )
     );
   });
-
 
   getMovieById$ = createEffect(() => {
     return this.actions$.pipe(

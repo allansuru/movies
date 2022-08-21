@@ -13,8 +13,10 @@ export interface Movie {
   homepage?: string;
   title?: string;
   tagline?: string;
+  poster_path?: string;
   production_companies?: production_companies[];
   production_countries?: production_countries[];
+  revenue?: number
 }
 
 export interface production_companies {

@@ -94,7 +94,6 @@ const MoviesReducer = createReducer(
 
 
   on(MoviesActions.searchMovieByIdSuccess, (state, action) => {
-    debugger
 
     return ({
       ...state,

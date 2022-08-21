@@ -18,12 +18,12 @@ import { Component, Input, OnInit } from '@angular/core';
   ]
 })
 export class ContentCardComponent implements OnInit {
-  @Input() loading!: boolean;
+  @Input() loading?: boolean | null;
   @Input() isShowTitleBorder!: boolean;
   @Input() isShowCardBorder!: boolean;
   @Input() isShowShadow = true;
-  @Input() title!: string;
-  @Input() subtitle!: string;
+  @Input() title?: string;
+  @Input() subtitle?: string;
   @Input() minHeigth = '100';
 
 

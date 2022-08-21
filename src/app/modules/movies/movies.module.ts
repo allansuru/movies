@@ -1,3 +1,4 @@
+import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,6 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MoviesDetailComponent } from './movies-detail/movies-detail.component';
 import { ContentCardModule } from '@core/layout/content-card/content-card.module';
 import { RouterModule } from '@angular/router';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { RouterModule } from '@angular/router';
     MatSnackBarModule,
     MatButtonModule,
     MatCardModule,
+    MatDividerModule,
+    MatListModule,
     MatPaginatorModule,
     StoreModule.forFeature(
       moviesReducers.MoviesFeatureKey,

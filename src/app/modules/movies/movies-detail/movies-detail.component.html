@@ -1,3 +1,83 @@
-<app-content-card [title]="'Detalhes'">
-  <div main-content></div>
-</app-content-card>
+<ng-container *ngIf="movie$ | async as movie">
+  <app-content-card
+    [title]="movie?.title"
+    [subtitle]="movie?.tagline"
+    [loading]="loading$ | async"
+  >
+    <div main-content>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start start pt-3 pb-3"
+        [style.height]="'100%'"
+      >
+        <mat-card class="exemple-card">
+          <div fxLayout="row" fxLayout.lt-sm="column">
+            <div fxFlex="0 100 100%">
+              <img
+                mat-card-image
+                src="{{
+                  'https://image.tmdb.org/t/p/original/' + movie?.poster_path
+                }}"
+              />
+            </div>
+          </div>
+        </mat-card>
+        <div fxLayout="column">
+          <div fxFlex fxLayout="row" class="ml-2 pt-2">
+            <div fxFlex>
+              <span>
+                <span class="mat-body-1">Homepage:</span>
+                <span class="mat-body-2"> {{ movie?.homepage }} </span>
+              </span>
+            </div>
+          </div>
+
+          <div fxFlex fxLayout="row" class="ml-2 pt-2">
+            <div fxFlex>
+              <span>
+                <span class="mat-body-1">Visualizações:</span>
+                <span class="mat-body-2">
+                  {{ movie?.revenue | number: "1.0-0" }}
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div fxFlex fxLayout="row" class="ml-2 pt-2">
+            <div fxFlex>
+              <span>
+                <span class="mat-body-1">Produtores:</span>
+              </span>
+
+              <mat-list class="inline-list">
+                <mat-list-item *ngFor="let item of movie.production_companies">
+                  <h2 matLine>
+                    <strong>{{ item.name }} - {{ item.origin_country }}</strong>
+                  </h2>
+                  <mat-divider mat-inset></mat-divider>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+
+          <div fxFlex fxLayout="row" class="ml-2 pt-2">
+            <div fxFlex>
+              <span>
+                <span class="mat-body-1">Produção:</span>
+              </span>
+
+              <mat-list class="inline-list">
+                <mat-list-item *ngFor="let item of movie.production_countries">
+                  <h2 matLine>
+                    <strong>{{ item.name }} - {{ item.iso_3166_1 }}</strong>
+                  </h2>
+                  <mat-divider mat-inset></mat-divider>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-content-card>
+</ng-container>
