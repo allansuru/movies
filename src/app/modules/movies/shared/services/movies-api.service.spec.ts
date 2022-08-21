@@ -10,7 +10,7 @@ describe('Service: MoviesApi', () => {
     });
   });
 
-  it('should ...', inject([MoviesApiService], (service: MoviesApiService) => {
+  xit('should ...', inject([MoviesApiService], (service: MoviesApiService) => {
     expect(service).toBeTruthy();
   }));
 });
