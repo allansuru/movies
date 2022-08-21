@@ -6,9 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-# Observaçoes
+# Observações!!!!
 
-Utilizei alguns padrões de projeto, como redux pattern, dummy components e event bus communication.
+1 - Utilizei alguns padrões de projeto, como redux pattern, dummy components e event bus communication.
+
+2 - fazer checkout para branch "develop"
 
 ## Telas
 
